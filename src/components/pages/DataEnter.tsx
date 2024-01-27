@@ -1,23 +1,19 @@
 import { Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ikeaLogo from "./ikeaLogo.jpg";
 
 function DataEnter() {
   const [code, setCode] = useState("");
-  //get access to the navigation history
   const navigate = useNavigate();
 
   const handleCodeChange = (event: { target: { value: string } }) => {
-    // Use a regular expression to allow only numeric input
     const numericInput = event.target.value.replace(/[^0-9]/g, "");
-    // Ensure only up to 4 digits are allowed
     const limitedInput = numericInput.slice(0, 3);
 
     setCode(limitedInput);
 
-    // Check if the entered code is the specific number
     if (limitedInput === "339") {
-      // Navigate to a different page (e.g., "/riddle")
       navigate("/riddle");
     }
   };
@@ -30,24 +26,26 @@ function DataEnter() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "#000000",
+        color: "#ffffff",
       }}
     >
+      <img
+        src={ikeaLogo}
+        style={{ width: "50%", height: "auto" }}
+        alt="Ikea Logo"
+      />
       <Grid item xs={12}>
-        <Typography
-          sx={{
-            fontSize: "36px",
-          }}
-        >
-          Enter 4 digit code
-        </Typography>
+        <Typography sx={{ fontSize: "36px" }}>Enter 4 digit code</Typography>
       </Grid>
       <Grid item xs={12}>
         <TextField
           sx={{
-            width: "500px",
-            borderRadius: "10px",
-            fontSize: "500px",
-            padding: "6px",
+            width: "250px",
+            borderRadius: "4px",
+            fontSize: "16px",
+            padding: "12px",
+            backgroundColor: "#ffffff",
           }}
           id="standard-basic"
           label="Enter your code here"
